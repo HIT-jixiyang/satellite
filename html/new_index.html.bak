@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>meteorological</title>
+		<link rel="stylesheet" href="css/new_index.css" />
+		<link rel="stylesheet" href="css/new_index.css" />
+		<link rel="stylesheet" href="css/timePicker.css">
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="js/images.js"></script>
+		<script type="text/javascript" src="js/xdate.js"></script>
+		<script type="text/javascript" src="js/new_index.js"></script>
+		<script type="text/javascript" src="js/jquery-timepicker.js"></script>
+		<script src="http://webapi.amap.com/maps?v=1.4.6&key=585990e306619b620f726c2b4ea7d314"></script>
+		<script type="text/javascript" src="js/datepicker/WdatePicker.js"></script>
+	</head>
+
+	<body>
+		<script>
+			$().ready(function(e) {
+				$("#newtimePicker").hunterTimePicker();
+			})
+		</script>
+		<div class="topnav" id="nav">
+			<input class="newdateinput" type="text" onclick="WdatePicker()" />
+			<input class="newtimeinput" type="text" id="newtimePicker" name="2" readonly>
+			<button class="newnavgxbtn">更新</button>
+			<button class="newnavzxbtn">最新</button>
+			<div class="navgl" id="newd0"></div>
+			<div class="navgl" id="newd1"></div>
+			<div class="navgl" id="newd2"></div>
+			<div class="navgl" id="newd3"></div>
+			<div class="navgl" id="newd4"></div>
+			<div class="navgl" id="newd5"></div>
+			<div class="navgl" id="newd6"></div>
+			<div class="navgl" id="newd7"></div>
+			<div class="navgl" id="newd8"></div>
+			<div class="navgl" id="newd9"></div>
+			<button class="newlastbtn" id="last">上一个</button>
+			<button class="nextandstopbtn" id="stop">暂停</button>
+			<button class="nextandstopbtn" id="next">下一个</button>
+			<!--清除浮动-->
+			<div style="clear: both;"></div>
+		</div>
+		<div class="autoMap">
+			<div class="newMap" id="mapSeven"></div>
+			<div class="newnexMap" id="mapEight"></div>
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+
+	</body>
+
+</html>

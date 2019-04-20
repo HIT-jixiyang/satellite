@@ -1,0 +1,88 @@
+body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.newautoMap {
+	width: 90%;
+	height: 90%;
+	margin-top: 2%;
+	margin-left: 5%;
+}
+
+.newtopnav {
+	width: 90%;
+	display: block;
+	margin-left: 5%;
+}
+
+.newnavgxbtn {
+	height: 30px;
+	width: 50px;
+	background-color: cornflowerblue;
+	float: left;
+	border: none;
+	margin-right: 20px;
+	color: white;
+}
+
+.newnavzxbtn {
+	height: 30px;
+	width: 50px;
+	background-color: red;
+	float: left;
+	border: none;
+	margin-right: 20px;
+	color: white;
+}
+
+.newlastbtn {
+	height: 30px;
+	width: 60px;
+	background-color: cornflowerblue;
+	float: left;
+	border: none;
+	margin-left: 15px;
+	color: white;
+}
+
+.nextandstopbtn {
+	height: 30px;
+	width: 60px;
+	background-color: cornflowerblue;
+	float: left;
+	border: none;
+	margin-left: 20px;
+	color: white;
+}
+
+.newdateinput {
+	float: left;
+	margin-right: 20px;
+	margin-top: 5px;
+	width: 80px;
+}
+
+.newtimeinput {
+	float: left;
+	margin-right: 20px;
+	margin-top: 5px;
+	width: 80px;
+}
+
+.newMap {
+	height: 100%;
+	width: 40%;
+	float: left;
+	margin-left: 6%;
+}
+
+.newnexMap {
+	height: 100%;
+	width: 40%;
+	float: left;
+	margin-left: 5%;
+}

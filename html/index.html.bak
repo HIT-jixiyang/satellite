@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>meteorological</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/timePicker.css">
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/new_index.css" />
+		<link rel="stylesheet" type="text/css" href="css/cityPicker.css">
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/images.js"></script>
+		<script type="text/javascript" src="js/xdate.js"></script>
+		<!-- <script type="text/javascript" src="js/index.js"></script> -->
+		<script type="text/javascript" src="js/jquery-timepicker.js"></script>
+		<script src="http://webapi.amap.com/maps?v=1.4.6&key=585990e306619b620f726c2b4ea7d314"></script>
+		<script type="text/javascript" src="js/datepicker/WdatePicker.js"></script>
+        <script type="text/javascript" src="js/cityData.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/cityPicker.js"></script>
+		<script type="text/javascript" src="js/new_index.js"></script>
+		<script type="text/javascript" src="js/echarts.js"></script>
+	</head>
+
+	<body>
+		<script>
+			$().ready(function(e) {
+				$("#timePicker").hunterTimePicker();
+				$("#newtimePicker").hunterTimePicker();
+								        var cityPicker = new IIInsomniaCityPicker({
+        data: cityData,
+        target: '#cityChoice',
+        valType: 'k-v',
+        hideCityInput: '#city',
+        hideProvinceInput: '#province',
+        callback: function(city_id){
+            
+        }
+    })
+	cityPicker.init();
+			})
+		</script>
+				<script>
+		 checkData = function () {
+
+		    if (document.getElementById("cityChoice").value == "") {
+                  alert("请选择dbz");
+                return false;
+            }
+			var vall = $("#hh").val()
+			var valll = $("#timePicker").val()
+            if(vall==" "||valll==" " ){
+			     var a = document.getElementById("ks").value;
+                 a = a.replace(/-/g, "");
+				 a = a.replace(/:/g, "");
+			     a = a.replace(/ /g, "");
+                 var c = document.getElementById("cityChoice").value;
+
+                var tempJsonFile0="metric/model1/model1_"+c+"/json/"+a+".json";
+				var tempJsonFile1="metric/model2/model2_"+c+"/json/"+a+".json";
+				var tempJsonFile2="metric/model3/model3_"+c+"/json/"+a+".json";
+				var tempJsonFile3="metric/model4/model4_"+c+"/json/"+a+".json";
+				var MODEL1=new Array(0,0,0,0);
+				var MODEL2=new Array(0,0,0,0);
+				var MODEL3=new Array(0,0,0,0);
+				var MODEL0=new Array(0,0,0,0);
+				
+
+                
+				$.ajaxSetup({async:false});
+					$.getJSON(tempJsonFile0,function(data,status,xhr){
+					console.log(data);
+					MODEL0[0]=data.POD;
+					
+					MODEL0[1]=data.FAR;
+					
+					MODEL0[2]=data.CSI;
+					
+					MODEL0[3]=data.hss;
+					
+				});
+               
+				
+				
+				$.getJSON(tempJsonFile1,function(data,status,xhr){
+					console.log(data);
+					MODEL1[0]=data.POD;
+					
+					MODEL1[1]=data.FAR;
+					
+					MODEL1[2]=data.CSI;
+					
+					MODEL1[3]=data.hss;
+					
+				});
+               
+	            
+				
+				//$.ajaxSetup({async:false});
+				$.getJSON(tempJsonFile2,function(data){
+
+					MODEL2[0]=data.POD;
+					
+					MODEL2[1]=data.FAR;
+					
+					MODEL2[2]=data.CSI;
+					
+					MODEL2[3]=data.hss;
+				});
+				
+              
+				//$.ajaxSetup({async:false});
+				$.getJSON(tempJsonFile3,function(data){
+
+					MODEL3[0]=data.POD;
+					
+					MODEL3[1]=data.FAR;
+					
+					MODEL3[2]=data.CSI;
+					
+					MODEL3[3]=data.hss;
+				});
+				
+				
+
+				
+				//init echart 
+				initEchart(MODEL1,MODEL2,MODEL3,MODEL0);
+				
+				$('#myModal').modal("show")
+				
+                return true;
+			}
+			else if (document.getElementById("hh").value == "") {
+                alert("请选择日期或时间");
+                return false;
+            }
+            else if (document.getElementById("timePicker").value == "") {
+                alert("请选择日期或时间");
+                return false;
+            }
+            else {
+                var a = document.getElementById("hh").value;
+                 a = a.replace(/-/g, "");
+                 var b = document.getElementById("timePicker").value;
+                 b = b.replace(/:/g, "");
+                 var c = document.getElementById("cityChoice").value;
+                 var d = a+b;
+
+                var tempJsonFile0="metric/model1/model1_"+c+"/json/"+d+".json";
+				var tempJsonFile1="metric/model2/model2_"+c+"/json/"+d+".json";
+				var tempJsonFile2="metric/model3/model3_"+c+"/json/"+d+".json";
+				var tempJsonFile3="metric/model4/model4_"+c+"/json/"+d+".json";
+				var MODEL1=new Array(0,0,0,0);
+				var MODEL2=new Array(0,0,0,0);
+				var MODEL3=new Array(0,0,0,0);
+				var MODEL0=new Array(0,0,0,0);
+				
+
+                
+				$.ajaxSetup({async:false});
+					$.getJSON(tempJsonFile0,function(data,status,xhr){
+					console.log(data);
+					MODEL0[0]=data.POD;
+					
+					MODEL0[1]=data.FAR;
+					
+					MODEL0[2]=data.CSI;
+					
+					MODEL0[3]=data.hss;
+					
+				});
+               
+				
+				
+				$.getJSON(tempJsonFile1,function(data,status,xhr){
+					console.log(data);
+					MODEL1[0]=data.POD;
+					
+					MODEL1[1]=data.FAR;
+					
+					MODEL1[2]=data.CSI;
+					
+					MODEL1[3]=data.hss;
+					
+				});
+               
+	            
+				
+				//$.ajaxSetup({async:false});
+				$.getJSON(tempJsonFile2,function(data){
+
+					MODEL2[0]=data.POD;
+					
+					MODEL2[1]=data.FAR;
+					
+					MODEL2[2]=data.CSI;
+					
+					MODEL2[3]=data.hss;
+				});
+				
+              
+				//$.ajaxSetup({async:false});
+				$.getJSON(tempJsonFile3,function(data){
+
+					MODEL3[0]=data.POD;
+					
+					MODEL3[1]=data.FAR;
+					
+					MODEL3[2]=data.CSI;
+					
+					MODEL3[3]=data.hss;
+				});
+				
+				
+
+				
+				//init echart 
+				initEchart(MODEL1,MODEL2,MODEL3,MODEL0);
+				
+				$('#myModal').modal("show")
+				
+                return true;
+				
+				
+            }
+
+			function initEchart(csidata,fardata,poddata,hssdata){
+				var myChart = echarts.init(document.getElementById('main'));
+				var option = {
+					title : {
+						
+						subtext: ''
+					},
+					tooltip : {
+						trigger: 'axis'
+					},
+					legend: {
+						data:['MODEL1','MODEL2','MODEL3','MODEL4']
+					},
+
+					calculable : true,
+					xAxis : [
+						{
+							type : 'category',
+							data : ['POD','FAR','CSI','HSS']
+						}
+					],
+					yAxis : [
+						{
+							type : 'value'
+						}
+					],
+					series : [
+						{
+							name:'MODEL1',
+							type:'bar',
+										label: {
+			      normal: {
+			          show: true,
+			          position: 'top',
+			          textStyle: {
+			            color: 'black'
+			          }
+			      }
+			 },
+							data:MODEL0,
+
+						},
+						 {
+							name:'MODEL2',
+							type:'bar',
+																	label: {
+			      normal: {
+			          show: true,
+			          position: 'top',
+			          textStyle: {
+			            color: 'black'
+			          }
+			      }
+			 },
+							data:MODEL1,
+
+						},
+						{
+							name:'MODEL3',
+							type:'bar',
+																	label: {
+			      normal: {
+			          show: true,
+			          position: 'top',
+			          textStyle: {
+			            color: 'black'
+			          }
+			      }
+			 },
+							data:MODEL2,
+
+						},
+						{
+							name:'MODEL4',
+							type:'bar',
+																	label: {
+			      normal: {
+			          show: true,
+			          position: 'top',
+			          textStyle: {
+			            color: 'black'
+			          }
+			      }
+			 },
+							data:MODEL3,
+						}
+						
+					 
+					]
+				};
+				myChart.setOption(option);
+			}
+}
+
+		 </script>
+		 		 <script>
+		     $(function(){
+        $(".modal-dialog").draggable({containment: "window" });;
+    })</script>
+
+
+		<div class="footer">
+			<div class="topnav" id="newnav">
+				<input class="newdateinput" id="newtime1" type="text" onclick="WdatePicker()" />
+				<input class="newtimeinput" type="text" id="newtimePicker" name="2" readonly>
+				   <select id="kd">
+    <option  value="请选择时间">选择特定时间</option>
+	<option  value="2018-03-19 22:00">2018-03-19 22:00</option>
+	<option  value="2018-03-19 23:00">2018-03-19 23:00</option>
+	<option  value="2018-05-07 16:00">2018-05-07 16:00</option>
+	<option  value="2018-05-07 17:00">2018-05-07 17:00</option>
+	<option  value="2018-05-07 18:00">2018-05-07 18:00</option>
+	<option  value="2018-05-07 19:00">2018-05-07 19:00</option>
+	<option  value="2018-05-07 20:00">2018-05-07 20:00</option>
+	<option  value="2018-05-07 21:00">2018-05-07 21:00</option>
+	<option  value="2018-05-09 06:00">2018-05-09 06:00</option>
+	<option  value="2018-05-09 07:00">2018-05-09 07:00</option>
+	<option  value="2018-05-09 08:00">2018-05-09 08:00</option>
+	<option  value="2018-05-09 09:00">2018-05-09 09:00</option>
+	<option  value="2018-06-08 13:00">2018-06-08 13:00</option>
+	<option  value="2018-06-05 01:00">2018-06-05 01:00</option>
+	<option  value="2018-06-05 02:00">2018-06-05 02:00</option>
+	<option  value="2018-06-05 03:00">2018-06-05 03:00</option>
+	<option  value="2018-06-05 04:00">2018-06-05 04:00</option>
+	<option  value="2018-06-05 05:00">2018-06-05 05:00</option>
+	<option  value="2018-06-05 06:00">2018-06-05 06:00</option>
+	<option  value="2018-07-24 07:00">2018-07-24 07:00</option>
+	<option  value="2018-07-24 08:00">2018-07-24 08:00</option>
+	<option  value="2018-08-27 21:00">2018-08-27 21:00</option>
+	<option  value="2018-08-27 22:00">2018-08-27 22:00</option>
+	<option  value="2018-08-29 14:00">2018-08-29 14:00</option>
+	<option  value="2018-08-29 15:00">2018-08-29 15:00</option>
+	<option  value="2018-09-16 13:00">2018-09-16 13:00</option>
+	<option  value="2018-09-16 14:00">2018-09-16 14:00</option>
+	<option  value="2018-09-16 15:00">2018-09-16 15:00</option>
+  </select>
+				<button class="newnavgxbtn">更新</button>
+				<button class="newnavzxbtn">最新</button>
+				<div class="navgl" id="newd0"></div>
+				<div class="navgl" id="newd1"></div>
+				<div class="navgl" id="newd2"></div>
+				<div class="navgl" id="newd3"></div>
+				<div class="navgl" id="newd4"></div>
+				<div class="navgl" id="newd5"></div>
+				<div class="navgl" id="newd6"></div>
+				<div class="navgl" id="newd7"></div>
+				<div class="navgl" id="newd8"></div>
+				<div class="navgl" id="newd9"></div>
+				<button class="newlastbtn" id="newlast">上一个</button>
+				<button class="nextandstopbtn" id="newstop">暂停</button>
+				<button class="nextandstopbtn" id="newnext">下一个</button>
+				<!-- 清除浮动 -->
+				<div style="clear: both;"></div>
+			</div>
+			<div class="newautoMap" id="newautoMapSpanId">
+				<p class="mapnextP" style="margin-left: 20%;">GRU模型1H连续实况：<span></span></p>
+				<p class="mapP">GRU模型1H连续预报：<span></span></p>
+				
+				<!-- 清除浮动 -->
+				<div style="clear: both;"></div>
+				<div class="newnexMap" id="mapEight" curr="1"></div>
+				<div class="newMap" id="mapSeven" curr="0"></div>
+				
+
+			</div>
+		</div>
+				      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width:800px" id="tuo">
+	  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+			</div>
+		  <div id="main" style="width: 800px;height:650px;"></div>
+</div>		
+</div>
+</div>
+	</body>
+<script>
+var sele = document.getElementById("ks").options;
+var opi = document.getElementById("hh");
+$("#hh").focus(function(){
+sele[0].selected=true;
+})
+$("#timePicker").focus(function(){
+sele[0].selected=true;
+})
+var ksd = document.getElementById("timePicker");
+$("#ks").focus(function(){
+opi.value=" ";
+ksd.value=" ";
+})
+</script>
+<script>
+var selee = document.getElementById("kd").options;
+var opii = document.getElementById("newtime1");
+var ksdd = document.getElementById("newtimePicker");
+$("#newtime1").focus(function(){
+sele[0].selected=true;
+})
+$("#newtimePicker").focus(function(){
+selee[0].selected=true;
+})
+$("#kd").focus(function(){
+opii.value=" ";
+ksdd.value=" ";
+})
+</script>
+
+
+</html>

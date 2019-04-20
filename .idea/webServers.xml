@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="18cd669a-c21f-4e53-99e4-c17d58cf98b0" name="gpu2 (project level)" url="http://219.223.251.151">
+        <fileTransfer host="219.223.251.151" port="22" accessType="SFTP" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="07161e19-9d32-406d-a37e-2b2ed10353a7" name="gpu3" url="http://219.223.251.166">
+        <fileTransfer host="219.223.251.166" port="22" accessType="SFTP" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="d58d3e86-523b-4dc3-8ebf-07680ca50b8f" name="gpu1" url="http://219.223.251.169">
+        <fileTransfer host="219.223.251.169" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="be9b24c8-b2fb-482b-818b-2cff7a98ce0a" name="ices5" url="http://219.223.251.25">
+        <fileTransfer host="219.223.251.25" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
